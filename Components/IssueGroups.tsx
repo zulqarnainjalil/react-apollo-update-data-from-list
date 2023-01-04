@@ -12,6 +12,8 @@ import {
   Td,
   TableContainer,
   useToast,
+  Spinner,
+  Stack,
 } from '@chakra-ui/react';
 import AdminUpdateIssueGroupForm from '../Components/AdminUpdateIssueGroupForm';
 import { useState } from 'react';
@@ -51,6 +53,13 @@ export default function IssueGroups() {
     loadGreeting();
     setIsOpen(false);
   };
+  if (loading)
+    return (
+      <Stack direction="row" spacing={4}>
+        {' '}
+        <Spinner size="xl" />
+      </Stack>
+    );
   if (error) return <p>Error : {error.message}</p>;
   return (
     <>
